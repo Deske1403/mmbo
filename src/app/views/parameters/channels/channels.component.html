@@ -1,0 +1,113 @@
+<div>
+  <ag-grid-angular (rowClicked)='FillParamsForm($event)'
+                   style="width: 900px; height: 250px;"
+                   class="ag-theme-balham"
+                   [rowData]="rowData"
+                   [columnDefs]="columnDefs"
+                   [defaultColDef]="defaultColDef"
+                   [pagination]="true"
+                   [paginationPageSize]="20">
+  </ag-grid-angular>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-75">
+        <input class="favorite styled" value="Modify" (click)="EnableModify(false)">
+      </div>    <div class="col-25">
+
+      </div>
+    </div>
+    <div class="row"></div>
+    <div class="row">
+      <div class="col-25 red">
+        <label for="fname">Channel Type</label>
+      </div>
+      <div class="col-75">
+        <select [disabled]="ctrDisabled">
+          <option>select</option>
+          <option *ngFor="let item of channelsTypeData" [value]="item.id">{{item.description}}</option><!--[selected]="item.id==item.businessUnit"-->
+        </select>
+        <!--<input type="text" id="channelType" placeholder="channelType" value="{{data.channelType}}" >-->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25 red">
+        <label for="lname">Channel Code</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="channelCode" placeholder="channelCode" value="{{data.channelCode}}" [disabled]="ctrDisabled">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25 red">
+        <label>Business Unit</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="businessUnit" placeholder="businessUnit" value="{{data.businessUnit}}" [disabled]="ctrDisabled">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25 ">
+        <label for="channelCode">Subscriber </label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="aqSubscriberName" value="{{data.subscriberName}}" [disabled]="ctrDisabled">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25 ">
+        <label for="channelCode">Swich to </label>
+      </div>
+      <div class="col-75">
+        <select [disabled]="ctrDisabled">
+          <option value="0">2</option>
+          <option value="1">3</option>
+          <option value="2">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25 red">
+        <label for="channelCode">Description</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="description" placeholder="description" value="{{data.description}}" [disabled]="ctrDisabled">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-75 red">
+        <label for="isActive">Is Active</label>
+      </div>
+      <div class="col-25">
+        <input type="checkbox" id="isActive" [checked]="this.isActiveChecked" [disabled]="ctrDisabled" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-75 red">
+        <label for="isAutoForexAllowed">Is Auto Forex Allowed</label>
+      </div>
+      <div class="col-25">
+        <input type="checkbox" id="isAutoForexAllowed" [checked]="this.isAutoForexAllowedChecked" [disabled]="ctrDisabled" />
+      </div>
+    </div>
+
+    <div class="row"> </div>
+    <div class="row">
+      <div class="col-75">
+        <input class="favorite styled" value="Post" (click)="ModifyChannel()" [disabled]="ctrDisabled">
+        <input class="favorite styled" value="Cancel" (click)="EnableModify(true)">
+
+      </div>
+      <div class="col-50">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<button mat-button (click)="openDialog()">Open dialog</button>
